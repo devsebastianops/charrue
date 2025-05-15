@@ -1,0 +1,21 @@
+files: 
+  - ressource_id: file1
+    name: file1.txt
+    content: |
+      This is file 1.
+    sensitive: true
+  - ressource_id: file2
+    name: file2.txt
+    content: |
+      This is file 2.
+    sensitive: false
+  - ressource_id: file3
+    name: file3.txt
+    content: |
+      This is file 3.
+    sensitive: true
+  - ressource_id: file4
+    name: file4.txt
+    content: |
+      This is file 4.
+    sensitive: false

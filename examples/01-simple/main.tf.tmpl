@@ -1,0 +1,6 @@
+resource "local_file" "simple" {
+  content = <<EOT
+{{ .content }}
+  EOT
+  filename = "${path.module}/simple.txt"
+}

@@ -1,36 +1,67 @@
-# Charrue
+![charrue](./docs/logo/cover.png)
 
-**Charrue** is a tool that generates Terraform configuration files from a higher-level config and template directory. Designed to abstract away the limitations of HCL, Charrue lets you write infrastructure logic using real programming constructs — without giving up the power of Terraform.
 
-> **Charrue** is a French word for *plow*.
+**charrue** is a tool that generates Terraform configuration files from a higher-level config and template directory. Designed to abstract away the limitations of HCL, charrue lets you write infrastructure logic using real programming constructs — without giving up the power of Terraform.
+
+> **charrue** is a French word for *plow*.
 > And just like a plow, it prepares the ground for something to grow.
 
 
-## :seedling: Why Charrue?
+## :seedling: Why charrue?
 
-Terraform's HCL is declarative, but painfully limited when it comes to reusability, logic, and abstractions. Charrue introduces a programmable layer between you and HCL, allowing you to:
+Terraform's HCL is declarative, but painfully limited when it comes to reusability, logic, and abstractions. charrue introduces a programmable layer between you and HCL, allowing you to:
 
 - Write DRY, logical, and testable infrastructure configs
 - Use real `if`/`else`, loops, functions, and composition
-- Maintain Terraform compatibility (Charrue emits `.tf` files)
+- Maintain Terraform compatibility (charrue emits `.tf` files)
 
 ## :rocket: Quickstart
 
 ```bash
-# Generate .tf files from your config and templates
-charrue render config.yaml templates/ > main.tf
+# Generate terraform files from the current directory
+charrue build
 
-# Optionally run Terraform
+# Alternatively you can specify other directories.
+# For more information, check out the help command, or read the documentation.
+
+# Change directory to the output directory
+cd dist
+
+# Next steps: Run terraform commands
 terraform init
-terraform apply
+terraform plan --out planfile
+terraform apply planfile
 ```
 
-## :pencil: Features
-- High-level config input (YAML or JSON)
-- Template-based Terraform generation
-- Optional terraform validate and formatting
-- CLI-first, Git-friendly, CI/CD-ready
+Check out the [documentation](/docs/README.md).
+
+## :wrench: Installation
+
+
+### Go install
+
+```bash
+go install github.com/devsebastianops/charrue@latest
+```
+
+### Install from source
+
+```bash
+git clone https://github.com/devsebastianops/charrue.git
+cd charrue
+make install
+```
+
+## :pencil: Roadmap
+
+- [x] Rendering of Terraform files using go templates
+- [x] Data from YAML files
+- [ ] Support for other input data formats (e.g. JSON, CSV)
+- [ ] Support for other template engines (e.g. Jinja2, Mustache)
+- [ ] Configuration file for charrue
+- [ ] Package managers support (e.g. `brew`, `scoop`, etc.)
+- [ ] Docker support
 
 ## :ledger: Licensee
-Charrue is licensed under the [Apache 2 License](LICENSE). Feel free to use, modify, and distribute it under the terms of this license. Contributions are welcome!
+charrue is licensed under the [Apache 2 License](LICENSE). Feel free to use, modify, and distribute it under the terms of this license. Contributions are welcome!
 

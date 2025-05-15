@@ -1,0 +1,24 @@
+{{ range .files }}
+{{ if eq .ressource_id "file4" }}
+resource "local_file" "file" {
+content = <<EOT
+{{ .content }}
+EOT
+  filename = "${path.module}/{{ .name }}"
+}
+{{ else }}
+resource "local_file" "{{ .ressource_id }}" {
+{{if .sensitive }}
+sensitive_content = <<EOT
+{{ .content }}
+EOT
+{{ else }}
+content = <<EOT
+{{ .content }}
+EOT
+{{ end }}
+
+  filename = "${path.module}/{{ .name }}"
+}
+{{ end }}
+{{ end }}

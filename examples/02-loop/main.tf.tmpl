@@ -1,0 +1,7 @@
+{{ range .files }}resource "local_file" "{{ .ressource_id }}" {
+  content = <<EOT
+{{ .content }}
+  EOT
+  filename = "${path.module}/{{ .name }}"
+}
+{{ end }}
